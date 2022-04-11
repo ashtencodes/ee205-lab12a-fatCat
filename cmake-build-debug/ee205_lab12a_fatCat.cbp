@@ -80,13 +80,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/tmp/tmp.viUqhYXPqX/Weight.cpp">
+			<Option target="ee205_lab12a_fatCat"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.viUqhYXPqX/Weight.h">
+			<Option target="ee205_lab12a_fatCat"/>
+		</Unit>
 		<Unit filename="/tmp/tmp.viUqhYXPqX/main.cpp">
-			<Option target="ee205_lab12a_fatCat"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.viUqhYXPqX/weight.cpp">
-			<Option target="ee205_lab12a_fatCat"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.viUqhYXPqX/weight.h">
 			<Option target="ee205_lab12a_fatCat"/>
 		</Unit>
 		<Unit filename="/tmp/tmp.viUqhYXPqX/CMakeLists.txt">

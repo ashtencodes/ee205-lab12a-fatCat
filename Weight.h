@@ -23,6 +23,7 @@ private:
     bool bHasMax;
 
     enum UnitOfWeight { POUND, KILO, SLUG };
+    enum UnitOfWeight unitOfWeight;
 
     float weight;
     float maxWeight;
