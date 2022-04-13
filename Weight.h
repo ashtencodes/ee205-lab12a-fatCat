@@ -12,30 +12,28 @@
 #pragma once
 #include <string>
 
-static const std::string POUND_LABEL;
-static const std::string KILO_LABEL;
-static const std::string SLUG_LABEL;
-
 class Weight {
+public: ////////////// Enumerations /////////////
+    enum UnitOfWeight { POUND, KILO, SLUG };
+
+    static const float UNKNOWN_WEIGHT;
+    static const float KILOS_IN_A_POUND;
+    static const float SLUGS_IN_A_POUND;
+
+    static const std::string POUND_LABEL;
+    static const std::string KILO_LABEL;
+    static const std::string SLUG_LABEL;
 
 private:
     bool bIsKnown;
     bool bHasMax;
 
-    enum UnitOfWeight { POUND, KILO, SLUG };
     enum UnitOfWeight unitOfWeight;
 
     float weight;
     float maxWeight;
 
-public: ////////////// Enumerations //////////////
-    /// A unit of measure for weight
-    static const float UNKNOWN_WEIGHT;
-    static const float KILOS_IN_A_POUND;
-    static const float SLUGS_IN_A_POUND;
-
 public: ////////////// Constructors //////////////
-
     Weight() noexcept;
     Weight( float newWeight );
     Weight( UnitOfWeight newUnitOfWeight ) noexcept;
@@ -53,6 +51,7 @@ public: ////////////// Getters and Setters //////////////
     UnitOfWeight getWeightUnit() const noexcept;
     void setWeight(float newWeight);
     void setWeight(float newWeight, UnitOfWeight weightUnits);
+    void setMaxWeight(float newMaxWeight);
 
     bool isWeightValid(float checkWeight) const noexcept;
     bool validate() const noexcept;
@@ -67,5 +66,8 @@ public:
     static float fromSlugToPound(float slug) noexcept;
     static float fromPoundToSlug(float pound) noexcept;
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
-    void setMaxWeight(float newMaxWeight);
 };
+
+
+
+
