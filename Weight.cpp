@@ -25,16 +25,16 @@ Weight::Weight() noexcept {
     bIsKnown = false;
     bHasMax = false;
     unitOfWeight = POUND;
-    weight = UNKNOWN_WEIGHT;
     maxWeight = UNKNOWN_WEIGHT;
+    weight = UNKNOWN_WEIGHT;
 }
 
 Weight::Weight(float newWeight) {
     bIsKnown = false;
     bHasMax = false;
     unitOfWeight = POUND;
-    setWeight( newWeight );
     maxWeight = UNKNOWN_WEIGHT;
+    weight = newWeight;
     assert( validate() );
 }
 
@@ -42,16 +42,16 @@ Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
     bIsKnown = true;
     bHasMax = false;
     unitOfWeight = newUnitOfWeight;
-    weight = UNKNOWN_WEIGHT;
     maxWeight = UNKNOWN_WEIGHT;
+    weight = UNKNOWN_WEIGHT;
 }
 
 Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) noexcept {
     bIsKnown = true;
     bHasMax = false;
     unitOfWeight = newUnitOfWeight;
-    setWeight( newWeight );
     maxWeight = UNKNOWN_WEIGHT;
+    weight = newWeight;
     assert( validate() );
 }
 
@@ -59,8 +59,8 @@ Weight::Weight(float newWeight, float newMaxWeight) {
     bIsKnown = true;
     bHasMax = true;
     unitOfWeight = POUND;
-    setWeight( newWeight );
-    setMaxWeight( newMaxWeight );
+    maxWeight = newMaxWeight;
+    weight = newWeight;
     assert( validate() );
 }
 
@@ -69,7 +69,7 @@ Weight::Weight(Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
     bHasMax = true;
     unitOfWeight = newUnitOfWeight;
     weight = UNKNOWN_WEIGHT;
-    setMaxWeight( newMaxWeight );
+    maxWeight = newMaxWeight;
     assert( validate() );
 }
 
@@ -77,8 +77,8 @@ Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newM
     bIsKnown = true;
     bHasMax = true;
     unitOfWeight = newUnitOfWeight;
-    setWeight( newWeight );
-    setMaxWeight( newMaxWeight );
+    weight = newWeight;
+    maxWeight = newMaxWeight;
     assert( validate() );
 }
 
@@ -128,6 +128,9 @@ void Weight::setMaxWeight(float newMaxWeight) {
 
 bool Weight::isWeightValid(float checkWeight) const noexcept {
     assert( (checkWeight > 0) || checkWeight == UNKNOWN_WEIGHT );
+    if( bHasMax ){
+        assert( checkWeight <= maxWeight );
+    }
     return true;
 }
 
@@ -230,6 +233,7 @@ Weight &Weight::operator+=(float rhs_addToWeight) {
 }
 
 void Weight::dump() const noexcept {
+    std::cout << "======================================================" << std::endl;
     std::cout << "bIsKnown: " << bIsKnown << std::endl;
     std::cout << "bHasMax: " << bHasMax << std::endl;
     std::cout << "Unit of Weight: " << unitOfWeight << std::endl;

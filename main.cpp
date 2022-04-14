@@ -9,9 +9,14 @@
 /// @date   11_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include <iostream>
 #include "Weight.h"
 
 int main() {
     Weight weight =  Weight(6.0);
+    weight.dump();
+    Weight weight2 = Weight(12, Weight::SLUG, 12);
+    weight2.dump();
+    std::cout << weight2.getWeight(Weight::POUND);
     return 0;
 }
