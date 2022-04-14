@@ -13,7 +13,7 @@
 #include <string>
 
 class Weight {
-public: ////////////// Enumerations /////////////
+public: ////////////// Enumerations and Const /////////////
     enum UnitOfWeight { POUND, KILO, SLUG };
 
     static const float UNKNOWN_WEIGHT;

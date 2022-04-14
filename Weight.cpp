@@ -11,10 +11,15 @@
 
 #include "Weight.h"
 #include <cassert>
+#include <iostream>
 
 const float Weight::UNKNOWN_WEIGHT = -1 ;
 const float Weight::KILOS_IN_A_POUND = 0.453592 ;
 const float Weight::SLUGS_IN_A_POUND = 0.031081 ;
+
+const std::string Weight::POUND_LABEL = "Pound";
+const std::string Weight::KILO_LABEL = "Kilo";
+const std::string Weight::SLUG_LABEL = "Slug";
 
 Weight::Weight() noexcept {
     bIsKnown = false;
@@ -184,5 +189,50 @@ float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Wei
                     return fromPoundToKilogram( pound );
             }
     }
+    return 0;
 }
 
+std::ostream& operator<<( std::ostream& lhs_stream
+        ,const Weight::UnitOfWeight rhs_UnitOfWeight ) {
+    switch( rhs_UnitOfWeight ) {
+        case Weight::POUND: return lhs_stream << Weight::POUND_LABEL ;
+        case Weight::KILO: return lhs_stream << Weight::KILO_LABEL ;
+        case Weight::SLUG: return lhs_stream << Weight::SLUG_LABEL ;
+    }
+    return lhs_stream << Weight::POUND_LABEL ;
+}
+
+bool Weight::operator==(const Weight &rhs_Weight) const {
+    float leftWeight = convertWeight( weight, unitOfWeight, POUND );
+    float rightWeight = convertWeight( rhs_Weight.weight, rhs_Weight.unitOfWeight, POUND );
+    if( leftWeight == rightWeight ){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool Weight::operator<(const Weight &rhs_Weight) const {
+    float leftWeight = convertWeight( weight, unitOfWeight, POUND );
+    float rightWeight = convertWeight( rhs_Weight.weight, rhs_Weight.unitOfWeight, POUND );
+    if( leftWeight < rightWeight ){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+Weight &Weight::operator+=(float rhs_addToWeight) {
+    weight += rhs_addToWeight;
+    return *this;
+}
+
+void Weight::dump() const noexcept {
+    std::cout << "bIsKnown: " << bIsKnown << std::endl;
+    std::cout << "bHasMax: " << bHasMax << std::endl;
+    std::cout << "Unit of Weight: " << unitOfWeight << std::endl;
+    std::cout << "Weight: " << weight << std::endl;
+    std::cout << "Max Weight: " << maxWeight << std::endl;
+}
