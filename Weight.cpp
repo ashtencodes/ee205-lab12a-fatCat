@@ -27,6 +27,7 @@ Weight::Weight() noexcept {
     unitOfWeight = POUND;
     maxWeight = UNKNOWN_WEIGHT;
     weight = UNKNOWN_WEIGHT;
+    assert( validate() );
 }
 
 Weight::Weight(float newWeight) {
@@ -44,6 +45,7 @@ Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
     unitOfWeight = newUnitOfWeight;
     maxWeight = UNKNOWN_WEIGHT;
     weight = UNKNOWN_WEIGHT;
+    assert( validate() );
 }
 
 Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) noexcept {
