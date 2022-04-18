@@ -17,6 +17,8 @@ int main() {
     weight.dump();
     Weight weight2 = Weight(12, Weight::SLUG, 12);
     weight2.dump();
-    std::cout << weight2.getWeight(Weight::POUND);
+    std::cout << weight2.getWeight(Weight::POUND) << std::endl;
+    Weight weight3 = Weight(3, 6);
+    weight3.dump();
     return 0;
 }

@@ -4,3 +4,6 @@
 CMakeFiles/ee205_lab12a_fatCat.dir/Weight.cpp.o: \
  ../Weight.cpp \
  ../Weight.h
+CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.o: \
+ ../Weight.h \
+ ../main.cpp

@@ -6,3 +6,15 @@
 
 #IncludeRegexTransform: 
 
+/tmp/tmp.viUqhYXPqX/Weight.cpp
+Weight.h
+/tmp/tmp.viUqhYXPqX/Weight.h
+cassert
+-
+iostream
+-
+
+/tmp/tmp.viUqhYXPqX/Weight.h
+string
+-
+

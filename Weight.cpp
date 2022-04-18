@@ -31,7 +31,7 @@ Weight::Weight() noexcept {
 }
 
 Weight::Weight(float newWeight) {
-    bIsKnown = false;
+    bIsKnown = true;
     bHasMax = false;
     unitOfWeight = POUND;
     maxWeight = UNKNOWN_WEIGHT;
@@ -40,7 +40,7 @@ Weight::Weight(float newWeight) {
 }
 
 Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
-    bIsKnown = true;
+    bIsKnown = false;
     bHasMax = false;
     unitOfWeight = newUnitOfWeight;
     maxWeight = UNKNOWN_WEIGHT;
